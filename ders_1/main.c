@@ -28,11 +28,11 @@ int main()
 
     iter = root;
     int i = 0;
-    while(iter != NULL){//listenin icinde gezme
+    while(iter -> next != NULL){//listenin icinde gezme
         i++;
         printf("%d. eleman: %d\n",i, iter -> x);
         iter = iter -> next;
-    }
+    }//iter en sondaki dügümü gosteriyor.
     for(i = 0;i<5;i++){//listeye yeni nodelar ekleme ve her node için değer verme.
         iter -> next = (node *)malloc(sizeof(node)); //yeni kutu oluusturduk
         iter = iter -> next //artık o kutuya erisim var.
