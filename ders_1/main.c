@@ -3,24 +3,37 @@
 
 struct n{
         int x;//Veriyi tutan alan
-        struct n * next;//Bir sonraki düðümün adresini tutan pointer
+        struct n * next;//Bir sonraki dügümün adresini tutan pointer
 };
-typedef struct n node;// 'struct n' yerine sadece 'node' yazabilmek için
+typedef struct n node;// 'struct n' yerine sadece 'node' yazabilmek icin
 
 int main()
 {
-    node * root; // Baðlý listenin baþlangýç düðümünü gösteren pointer
-    root = (node *)malloc(sizeof(node));//ilk kutuyu oluþturduk
-    root ->x = 10; //Pointer'ýn gösterdiði bellek adresindeki x alanýna eriþ
+    node * root; // Bagli listenin baslangic dügümünü gösteren pointer
+    root = (node *)malloc(sizeof(node));//ilk kutuyu olusturduk
+    root ->x = 10; //Pointer'in gösterdigi bellek adresindeki x alanina eris
+
     root -> next = (node *)malloc(sizeof(node));//yeni bir kutu oluþtu ve bunu ilk kutuya baðladý
     root -> next -> x = 20; //rootun gösterdiði kutunun nextinin x i
+
     root -> next -> next = (node *)malloc(sizeof(node));
     root -> next -> next -> x = 30;
+    root -> next -> next -> next = NULL;
+
     node * iter;
     iter = root;
     printf("%d\n", iter->x);
     iter = iter -> next;
-    printf("%d", iter->x);
+    printf("%d\n\n\n", iter->x);
+
+    iter = root;
+    int i = 0;
+    while(iter != NULL){
+        i++;
+        printf("%d. eleman: %d\n",i, iter -> x);
+        iter = iter -> next;
+    }
+
 }
 
 
