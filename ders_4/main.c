@@ -12,6 +12,7 @@ void bastir(node * iter){
         printf("%d\n", iter->x);
         iter = iter -> next;
     }
+    printf("\n");
 }
 
 node * sirali_ekle(node * r, int sayi){
@@ -37,6 +38,32 @@ node * sirali_ekle(node * r, int sayi){
     iter -> next = temp;
     temp -> x = sayi;
     return r;
+}
+
+node * silme(node * root, int deger){
+    if (root == NULL){
+        printf("Liste bos.");
+        return NULL;
+    }
+    node * iter = root;
+    node * temp;
+    if (root -> x == deger){
+        temp = root;
+        root = temp -> next;
+        free(temp);
+        return root;
+    }
+    while(iter -> next != NULL && iter -> next -> x != deger){
+        iter = iter -> next;
+    }
+    if (iter->next == NULL){
+        printf("Sayi bulunamadi.");
+        return root;
+    }
+    temp = iter -> next;
+    iter -> next = iter -> next -> next;
+    free(temp);
+    return root;
 }
 
 int main()
